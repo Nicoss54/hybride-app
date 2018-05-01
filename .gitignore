@@ -8,6 +8,8 @@
 .idea/
 back/node_modules
 todo-list-ionic/node_modules
+todo-list-ionic/platforms
+
 
 
 ### Intellij+all ###
