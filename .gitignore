@@ -7,6 +7,7 @@
 ### Specific to the project #####
 .idea/
 back/node_modules
+todo-list-ionic/node_modules
 
 
 ### Intellij+all ###
