@@ -17,4 +17,4 @@ Navigate to the url: http://localhost:3000/api/documentation to see the document
 
 ## Further Help 
 
-Ask questions at the end of the sfeir school 
+Ask questions at the end of the presentation 

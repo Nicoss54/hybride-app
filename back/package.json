@@ -6,12 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-dev": "nodemon server.js --exec babel-node",
-    "start-container": "NODE_ENV=container babel-node server.js",
     "start": "babel-node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/Nicoss54/docker-sfeirschool-exercice.git"
+    "url": "git+ssh://git@github.com:Nicoss54/hybride-app.git"
   },
   "keywords": [
     "node",
@@ -24,10 +23,6 @@
   ],
   "author": "Nicolas Frizzarin",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Nicoss54/docker-sfeirschool-exercice/issues"
-  },
-  "homepage": "https://github.com/Nicoss54/docker-sfeirschool-exercice#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
