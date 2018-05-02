@@ -16,7 +16,7 @@
             </ion-col>
             <ion-col col-2>
               <ion-fab>
-                <button ion-fab mini (click)="submitTodos(todoForm.value)">+</button>
+                <button ion-fab mini (click)="submitTodos(todoForm.value)" [disabled]="!todoForm.valid">+</button>
               </ion-fab>
             </ion-col>
           </ion-row>
