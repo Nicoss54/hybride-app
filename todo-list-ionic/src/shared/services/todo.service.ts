@@ -13,9 +13,20 @@ export class TodoService {
    * @name TodoService#getTodos
    * @type { function }
    * @description get the list of todos
-   * @returns { Observable<Todo[]> } list of todos
+   * @returns { Observable<Todo[]> } list of todo
    */
   getTodos(): Observable <Todo[]> {
     return this._http.get<Todo[]>(`${this._appService.baseUrlBackend}/todos`);
+  }
+
+  /**
+   * @name TodoService#postTodo
+   * @type {function}
+   * @description post a todo
+   * @param {Todo} todo
+   * @returns {Observable<Todo>}
+   */
+  postTodo(todo: Todo): Observable <Todo> {
+    return this._http.post(`${this._appService.baseUrlBackend}/todos`, todo);
   }
 }

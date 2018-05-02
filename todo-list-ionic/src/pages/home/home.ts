@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {IonicPage} from 'ionic-angular';
+import {IonicPage, Toast} from 'ionic-angular';
 import {TodoService} from "../../shared/services/todo.service";
 import {Todo} from "../../models/todo";
 import {Observable} from "rxjs/Observable";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { Constant } from "../../shared/constants/app-constant";
+import {ToasterService} from "../../shared/services/toaster.service";
 
 
 @IonicPage()
@@ -18,7 +19,7 @@ export class HomePage implements OnInit {
   private _todoForm: FormGroup;
   public appConstant = Constant;
 
-  constructor(private _todoService: TodoService, private _fb: FormBuilder) {
+  constructor(private _todoService: TodoService, private _fb: FormBuilder, private _toasterService: ToasterService) {
   }
 
   /**
@@ -43,6 +44,24 @@ export class HomePage implements OnInit {
     });
   }
 
+  /**
+   * @name HomePage#submitTodos
+   * @type {function}
+   * @description action call when click on submit button
+   * @param {Todo} todo
+   */
+  submitTodos(todo: Todo): void {
+    let toast: Toast;
+    this._todoService.postTodo(todo).subscribe((todo: Todo ) => {
+      this._todoObservable = this.getTodos();
+      this._todoForm.reset();
+      toast = this._toasterService.createToast(this.appConstant.todoCreatedSuccessful());
+      toast.present();
+    }, (error) => {
+      toast = this._toasterService.createToast(this.appConstant.errorCreatedTodo());
+      toast.present();
+    });
+  }
   /**
    * @name HomePage#getTodos
    * @type { function }
