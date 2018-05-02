@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
-import {TodoService} from "../../shared/services/todo.service";
+import { IonicPage } from 'ionic-angular';
+import { TodoService } from "../../shared/services/todo.service";
+import { Todo } from "../../models/todo";
+import {Observable} from "rxjs/Observable";
 
 @IonicPage()
 @Component({
@@ -9,8 +11,36 @@ import {TodoService} from "../../shared/services/todo.service";
 })
 export class HomePage implements OnInit {
 
-  constructor( private _nav: NavController, private _todoService: TodoService ) {}
+  private _todoObservable: Observable <Todo[]>;
 
-  ngOnInit(): void {}
+  constructor( private _todoService: TodoService ) {}
 
+  /**
+   * @name HomePage#ngOnInit
+   * @type { function }
+   * @description Angular lifeCycle Hook Oninit
+   */
+  ngOnInit(): void {
+    this._todoObservable = this.getTodos();
+  }
+
+
+  /**
+   * @name HomePage#getTodos
+   * @type { function }
+   * @description get a list of todos
+   */
+  getTodos(): Observable <Todo[]> {
+    return this._todoService.getTodos();
+  }
+
+  /**
+   * @name HomePage#todoObservable
+   * @type {getter}
+   * @description Getter of private varibale _todoObservable
+   * @returns {Observable<Todo[]>}
+   */
+  public get todoObservable(): Observable<Todo[]> {
+    return this._todoObservable;
+  }
 }
