@@ -1,0 +1,14 @@
+<ion-content id="todo" padding>
+  <div class="container-form">
+    <form [formGroup]="todoForm">
+      <ion-list>
+        <ion-item>
+          <ion-input type="text" [placeholder]="appConstant.getPlaceholderInput()" formControlName="todo"></ion-input>
+        </ion-item>
+      </ion-list>
+      <div class="error-container" *ngIf="todo.errors && (todo.dirty || todo.touched)">
+        <ion-label [hidden]="!todo.errors.required">{{appConstant.getErrorRequired()}}</ion-label>
+      </div>
+    </form>
+  </div>
+</ion-content>

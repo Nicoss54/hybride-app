@@ -3,7 +3,9 @@ import {IonicPage} from 'ionic-angular';
 import {TodoService} from "../../shared/services/todo.service";
 import {Todo} from "../../models/todo";
 import {Observable} from "rxjs/Observable";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { Constant } from "../../shared/constants/app-constant";
+
 
 @IonicPage()
 @Component({
@@ -14,6 +16,7 @@ export class HomePage implements OnInit {
 
   private _todoObservable: Observable<Todo[]>;
   private _todoForm: FormGroup;
+  public appConstant = Constant;
 
   constructor(private _todoService: TodoService, private _fb: FormBuilder) {
   }
@@ -21,7 +24,7 @@ export class HomePage implements OnInit {
   /**
    * @name HomePage#ngOnInit
    * @type { function }
-   * @description Angular lifeCycle Hook Oninit
+   * @description Angular lifeCycle Hook OnInit
    */
   ngOnInit(): void {
     this._todoObservable = this.getTodos();
@@ -32,7 +35,7 @@ export class HomePage implements OnInit {
   /**
    * @name HomePage#buildForm
    * @type { function }
-   * @description build form to post a todo
+   * @description build form to post a task
    */
   buildForm(): void {
     this._todoForm = this._fb.group({
@@ -43,7 +46,7 @@ export class HomePage implements OnInit {
   /**
    * @name HomePage#getTodos
    * @type { function }
-   * @description get a list of todos
+   * @description get a list of task
    */
   getTodos(): Observable<Todo[]> {
     return this._todoService.getTodos();
@@ -67,5 +70,9 @@ export class HomePage implements OnInit {
    */
   public get todoForm(): FormGroup {
     return this._todoForm;
+  }
+
+  public get todo(): AbstractControl {
+    return this._todoForm.get('todo');
   }
 }
