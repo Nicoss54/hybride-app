@@ -5,36 +5,39 @@
 </ion-header>
 
 <ion-content id="todo" padding>
-  <div class="container-form">
-    <form [formGroup]="todoForm">
-      <ion-grid>
-        <ion-row>
-          <ion-col col-10>
-            <ion-input type="text" [placeholder]="appConstant.getPlaceholderInput()"  formControlName="todo" required></ion-input>
-          </ion-col>
-          <ion-col col-2>
-            <ion-fab>
-              <button ion-fab mini (click)="submitTodos(todoForm.value)">+</button>
-            </ion-fab>
-          </ion-col>
-        </ion-row>
-        <ion-row *ngIf="todo.errors && (todo.dirty)">
-          <ion-col col-12>
-            <span class="error" [hidden]="!todo.errors.required">{{appConstant.getErrorRequired()}}</span>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </form>
-  </div>
+  <div class="wrapper-content">
+    <div class="container-form">
+      <form [formGroup]="todoForm">
+        <ion-grid>
+          <ion-row>
+            <ion-col col-10>
+              <ion-input type="text" [placeholder]="appConstant.getPlaceholderInput()" formControlName="todo"
+                         required></ion-input>
+            </ion-col>
+            <ion-col col-2>
+              <ion-fab>
+                <button ion-fab mini (click)="submitTodos(todoForm.value)">+</button>
+              </ion-fab>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="todo.errors && (todo.dirty)">
+            <ion-col col-12>
+              <span class="error" [hidden]="!todo.errors.required">{{appConstant.getErrorRequired()}}</span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    </div>
 
-  <div class="container-list">
-    <div class="list">
-      <ion-list *ngIf="todoObservable | async as todos">
-        <ion-list-header>{{appConstant.myListTodosTitle()}}</ion-list-header>
-        <ion-item-group reorder="true">
-          <ion-item *ngFor="let item of todos">{{item.todo}}</ion-item>
-        </ion-item-group>
-      </ion-list>
+    <div class="container-list">
+      <div class="list">
+        <ion-list *ngIf="todoObservable | async as todos">
+          <ion-list-header>{{appConstant.myListTodosTitle()}}</ion-list-header>
+          <ion-item-group>
+            <ion-item *ngFor="let item of todos">{{item.todo}}</ion-item>
+          </ion-item-group>
+        </ion-list>
+      </div>
     </div>
   </div>
 </ion-content>

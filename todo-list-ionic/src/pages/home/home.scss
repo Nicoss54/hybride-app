@@ -1,16 +1,13 @@
 #todo {
-
-  .container-form {
-    .error {
-      background-color: #b71c1c;
-      color: white;
-      border-radius: 10px;
-      padding: 2%;
+  .wrapper-content {
+    .container-form {
+      margin-bottom: 20%;
+      .error {
+        background-color: #b71c1c;
+        color: white;
+        border-radius: 10px;
+        padding: 2%;
+      }
     }
   }
-
-  .container-list {
-
-  }
-
 }
