@@ -5,31 +5,26 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule } from "@angular/common/http";
 import { MyApp } from "./app.component";
-import { HomePage } from "../pages/home/home";
-import { AppService } from "../shared/services/app.service";
-import { TodoService } from "../shared/services/todo.service";
+import { HomeModule } from "../pages/home/home.module";
 
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    HomeModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    AppService,
-    TodoService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
