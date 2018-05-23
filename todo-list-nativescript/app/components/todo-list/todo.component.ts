@@ -27,7 +27,7 @@ export class TodoComponent implements OnInit {
         this._todoService.getTodos().subscribe(todos => this.todos = todos);
     }
 
-    onTap(): void {
+    onTap(text): void {
         let todo = new Todo();
         todo.todo = text;
         this._todoService.postTodo(todo).subscribe((todo: Todo ) => {

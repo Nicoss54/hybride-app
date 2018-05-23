@@ -31,7 +31,7 @@
 
     <div class="container-list">
       <div class="list">
-        <ion-list *ngIf="todoObservable | async as todos">
+        <ion-list *ngIf="todoObservable | async as todos;">
           <ion-list-header>{{appConstant.myListTodosTitle()}}</ion-list-header>
           <ion-item-group>
             <ion-item *ngFor="let item of todos">{{item.todo}}</ion-item>
