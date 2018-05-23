@@ -1,0 +1,16 @@
+<ActionBar title="My App" class="action-bar">
+</ActionBar>
+
+
+<StackLayout class="page">
+    <StackLayout orientation="horizontal" class="p-20">
+        <TextField hint="Enter ToDo" [(ngModel)]="text"></TextField>
+        <Button id="button" text="Add" (tap)="onTap($event)"></Button>
+    </StackLayout>
+    <ListView [items]="todos" class="list-group">
+        <ng-template let-item="item">
+            <Label [nsRouterLink]="['/todo', item.id]" [text]="item.todo"
+                   class="list-group-item"></Label>
+        </ng-template>
+    </ListView>
+</StackLayout>
